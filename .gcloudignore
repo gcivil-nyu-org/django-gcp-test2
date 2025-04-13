@@ -30,3 +30,30 @@ env/
 node_modules/
 dist/
 build/
+# .gcloudignore
+.gcloudignore
+.git
+.gitignore
+.env
+env/
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.db
+*.sqlite3
+
+# Ignore all site-packages content
+**/site-packages/
+**/dist-info/
+**/pip/
+
+# Ignore Travis and local build folders
+.travis/
+.travis.yml
+$HOME/google-cloud-sdk/
+**/google-cloud-sdk/
+google-cloud-sdk/
+gcloud-sdk/
+
