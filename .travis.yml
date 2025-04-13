@@ -1,0 +1,24 @@
+language: python
+python:
+  - "3.9"
+
+install:
+  - pip install -r requirements.txt
+  - pip install google-cloud-sdk
+
+before_script:
+  # Write raw JSON to key file
+  - echo "$GCLOUD_KEY" > ${HOME}/gcloud-key.json
+  - curl https://sdk.cloud.google.com | bash > /dev/null
+  - source $HOME/google-cloud-sdk/path.bash.inc
+  - gcloud auth activate-service-account --key-file=${HOME}/gcloud-key.json
+  - gcloud config set project django-demo-456022
+
+script:
+  - python manage.py test
+
+deploy:
+  provider: script
+  script: gcloud app deploy app.yaml --quiet
+  on:
+    branch: main
