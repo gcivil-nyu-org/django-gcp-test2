@@ -22,10 +22,17 @@ before_script:
 
 script:
   - python manage.py test
+  - |
+    if [ "$TRAVIS_BRANCH" = "main" ]; then
+      echo "Deploying to App Engine..."
+      gcloud app deploy app.yaml --quiet
+    else
+      echo "Not on main branch, skipping deployment."
+    fi
 
-deploy:
-  provider: script
-  script: gcloud app deploy app.yaml --quiet
-  skip_cleanup: true
-  on:
-    branch: main
+# deploy:
+#   provider: script
+#   script: gcloud app deploy app.yaml --quiet
+#   skip_cleanup: true
+#   on:
+#     branch: main
