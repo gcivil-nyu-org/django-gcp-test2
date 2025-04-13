@@ -7,7 +7,7 @@ install:
   - pip install -r requirements.txt
 
 before_script:
-  - echo "$GCLOUD_KEY_BASE64" | base64 -d > ${HOME}/gcloud-key.json
+  - echo "$DEPLOY_KEY" | base64 -d > ${HOME}/gcloud-key.json
   - curl https://sdk.cloud.google.com | bash > /dev/null
   - source $HOME/google-cloud-sdk/path.bash.inc
   - gcloud auth activate-service-account --key-file=${HOME}/gcloud-key.json
