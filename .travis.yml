@@ -3,6 +3,10 @@ language: python
 python:
   - "3.9"
 
+before_install:
+  - gem install dpl -v 1.10.16
+
+
 install:
   - pip install -r requirements.txt
 
@@ -23,6 +27,5 @@ deploy:
   provider: script
   script: gcloud app deploy app.yaml --quiet
   skip_cleanup: true
-  edge: false
   on:
     branch: main
