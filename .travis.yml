@@ -21,7 +21,9 @@ before_script:
 
 
 script:
+  - cd app
   - python manage.py test
+  - rm -rf ~/.local env .venv
   - if [ "$TRAVIS_BRANCH" = "main" ]; then gcloud app deploy app.yaml --quiet; fi
 
 # deploy:
