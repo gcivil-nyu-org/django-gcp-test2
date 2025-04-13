@@ -8,7 +8,7 @@ install:
 
 before_script:
   - echo "$DEPLOY_KEY" | base64 -d > ${HOME}/gcloud-key.json
-  - curl -sSL https://sdk.cloud.google.com | bash -s -- --disable-prompts --install-dir=$HOME --bash-completion=false
+  - curl -sSL https://sdk.cloud.google.com | bash -s -- --disable-prompts --install-dir=$HOME
   - source $HOME/google-cloud-sdk/path.bash.inc
   - gcloud auth activate-service-account --key-file=${HOME}/gcloud-key.json
   - gcloud config set project django-demo-456022
